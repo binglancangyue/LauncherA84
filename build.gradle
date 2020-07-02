@@ -50,7 +50,7 @@ android {
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 19
     }
-    buildToolsVersion = '30.0.0 rc1'
+    buildToolsVersion = '30.0.0'
 }
 
 repositories {

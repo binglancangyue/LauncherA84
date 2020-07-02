@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -106,7 +107,11 @@ public class HomeActivity extends Activity implements OnEnterListener, OnExitLis
         View view = getWindow().getDecorView();
         int visibility = View.STATUS_BAR_TRANSIENT | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
         view.setSystemUiVisibility(visibility);
-        setContentView(R.layout.activity_home_recorder);
+        if (Constances.IS_ZKJA) {
+            setContentView(R.layout.activity_home_recorder_horizontal);
+        } else {
+            setContentView(R.layout.activity_home_recorder);
+        }
         this.mContext = this;
         myApplication = (MyApplication) getApplication();
         mActivityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
@@ -176,7 +181,9 @@ public class HomeActivity extends Activity implements OnEnterListener, OnExitLis
 
 
     private void initData() {
-//        changeGridView();
+        if (Constances.IS_ZKJA) {
+            changeGridView();
+        }
         qc7SpliteGridViewAdapter = new Qc7SpliteGridViewAdapter(this, getQc7SpliteItemData());
         qc9ThreeGridView.setAdapter(qc7SpliteGridViewAdapter);
         qc9ThreeGridView.setOnItemClickListener(new OnItemClickListener() {
@@ -269,6 +276,18 @@ public class HomeActivity extends Activity implements OnEnterListener, OnExitLis
                         Log.d(TAG, "settingsPackageName:" + settingsPackageName + ";");
                         if (settingsPackageName == null || settingsPackageName.equals("null")) {
                             launchByPackageName(Constances.PACKAGE_NAME_KAILIDE);
+//							}
+                        } else {
+                            launchByPackageName(settingsPackageName);
+                        }
+                        break;
+                    case Constances.PACKAGE_NAME_CLD_3:
+                        defaultMapPkg = Constances.DEFAULT_MAP;
+                        settingsPackageName = Settings.System.getString(getContentResolver(), "bar_map_start_pkg");
+
+                        Log.d(TAG, "settingsPackageName:" + settingsPackageName + ";");
+                        if (settingsPackageName == null || settingsPackageName.equals("null")) {
+                            launchByPackageName(Constances.PACKAGE_NAME_CLD_3);
 //							}
                         } else {
                             launchByPackageName(settingsPackageName);
@@ -629,6 +648,9 @@ public class HomeActivity extends Activity implements OnEnterListener, OnExitLis
                     if (type == 1071) {
                         if (OPEN_CLD.equals(actionStirng)) { // 打开凯立德
                             launchByPackageName(Constances.PACKAGE_NAME_CLD_2);
+                            if (Constances.IS_ZKJA) {
+                                launchByPackageName(Constances.PACKAGE_NAME_CLD_3);
+                            }
                             Log.d("aaa", "open cld");
                         } else if (CLOSE_CLD.equals(actionStirng)) { // 关闭凯立德
                             int leftStack = SplitUtil.getLeftStackId(context);
@@ -638,6 +660,11 @@ public class HomeActivity extends Activity implements OnEnterListener, OnExitLis
                             if (taskInfo != null) {
                                 Intent it = taskInfo.baseIntent;
                                 if (Constances.PACKAGE_NAME_CLD_2.equals(it.getComponent().getPackageName())) {
+                                    int persistentId = taskInfo.persistentId;
+                                    Log.d(TAG, "persistentId = " + persistentId);
+                                    LaunchApp.killPkgByPersistentId(context, persistentId);
+                                }
+                                if (Constances.PACKAGE_NAME_CLD_3.equals(it.getComponent().getPackageName())) {
                                     int persistentId = taskInfo.persistentId;
                                     Log.d(TAG, "persistentId = " + persistentId);
                                     LaunchApp.killPkgByPersistentId(context, persistentId);
@@ -682,6 +709,14 @@ public class HomeActivity extends Activity implements OnEnterListener, OnExitLis
 //				sendBroadcast(mIntent);
                 appLabel = Constances.MAP_CLD;
                 startappPackageNameppPackageName = Constances.PACKAGE_NAME_CLD_2;
+            }
+            if (packageName.equals(Constances.PACKAGE_NAME_CLD_3)) {
+//				boolean isAutoLite = false;
+//				Intent mIntent = new Intent(Constances.ACTION_NAME_IS_AUTOLITE);
+//				mIntent.putExtra("isAutoLite", isAutoLite);
+//				sendBroadcast(mIntent);
+                appLabel = Constances.MAP_CLD;
+                startappPackageNameppPackageName = Constances.PACKAGE_NAME_CLD_3;
             }
             if (packageName.equals(Constances.PACKAGE_NAME_AUTOLITE)) {
 //				boolean isAutoLite = true;
@@ -813,6 +848,9 @@ public class HomeActivity extends Activity implements OnEnterListener, OnExitLis
 
         if (Constances.DEFAULT_MAP.equals(Constances.MAP_CLD)) {
             defaultMapPkg = Constances.PACKAGE_NAME_CLD_2;
+            if (Constances.IS_ZKJA) {
+                defaultMapPkg = Constances.PACKAGE_NAME_CLD_3;
+            }
         } else if (Constances.DEFAULT_MAP.equals(Constances.MAP_SYGIC)) {
             defaultMapPkg = Constances.PACKAGE_NAME_SYGIC_MAP;
         } else if (Constances.DEFAULT_MAP.equals(Constances.MAP_LEKE)) {
@@ -831,6 +869,9 @@ public class HomeActivity extends Activity implements OnEnterListener, OnExitLis
         if (Constances.PACKAGE_NAME_CLD_2.equals(defaultMap)) {
             map = Constances.MAP_CLD;
             pkg = Constances.PACKAGE_NAME_CLD_2;
+            if (Constances.IS_ZKJA) {
+                pkg = Constances.PACKAGE_NAME_CLD_3;
+            }
         } else if (Constances.PACKAGE_NAME_LEKE_MAP.equals(defaultMap)) {
             map = Constances.MAP_LEKE;
             pkg = Constances.PACKAGE_NAME_LEKE_MAP;

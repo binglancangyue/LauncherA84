@@ -50,7 +50,7 @@ public class Qc7SpliteGridViewAdapter extends BaseAdapter {
 			viewHolder = new ViewHolder();
 			convertView = inflater.inflate(R.layout.item_view_qc7_splite, null);
 			viewHolder.imageView = (ImageView) convertView.findViewById(R.id.image);
-			viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+//			viewHolder.name = (TextView) convertView.findViewById(R.id.name);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
@@ -58,8 +58,8 @@ public class Qc7SpliteGridViewAdapter extends BaseAdapter {
 
 		ItemData data = datas.get(position);
 		viewHolder.imageView.setImageResource(data.getmImage());
-		viewHolder.name.setText(mContext.getResources().getString(data.getmName()));
-		viewHolder.name.setTextSize(mWindowsStatus == HomeActivity.MW_NORMAL_STACK_WINDOW ? 20 : 30);
+//		viewHolder.name.setText(mContext.getResources().getString(data.getmName()));
+//		viewHolder.name.setTextSize(mWindowsStatus == HomeActivity.MW_NORMAL_STACK_WINDOW ? 20 : 30);
 		return convertView;
 	}
 

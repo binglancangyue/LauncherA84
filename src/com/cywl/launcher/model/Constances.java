@@ -89,6 +89,8 @@ public class Constances {
     public static final String PACKAGE_NAME_AUTOLITE = "com.autonavi.amapautolite";
     public static final String PACKAGE_NAME_AMAPAUTO = "com.autonavi.amapauto";
     public static final String PACKAGE_NAME_CLD_2 = "cld.navi.STD.mainframe";
+    public static final String PACKAGE_NAME_CLD_3 = "cld.navi.kaimap.h4139.mainframe";
+
     // public static final String PACKAGE_NAME_CLD = "cld.navi.k3618.mainframe";
     public static final String PACKAGE_NAME_BLUETOOTH = "com.cywl.bt.activity";
     public static final String PACKAGE_NAME_TIANDIDA = "cn.jyuntech.map";
@@ -146,7 +148,7 @@ public class Constances {
     public static final String KUWO_ACTION = "com.kuwo.music.change";//切歌广播
 //    public static final String PACKAGE_NAME_SETTINGS = "SETTINGS";
     public static final String ACTION_TXZ_ENABLE = "com.cywl.launcher_txz_enable";
-
+    public static final boolean IS_ZKJA = true;
 
 
     public static final int KEY_GAODE = 1;
@@ -221,17 +223,17 @@ public class Constances {
 //            R.drawable.iv_applist_splite_qc7,};//hp english version
 
 
-//    public static int[] img9ThreeImage = new int[]{
-//            R.drawable.iv_navi_zkja, R.drawable.iv_video_zkja,
-//            R.drawable.iv_record_zkja, R.drawable.iv_fm_zkja,
-//            R.drawable.iv_bt_zkja, R.drawable.iv_settings_zkja,
-//            R.drawable.iv_applist_zkja};// zkja
-
     public static int[] img9ThreeImage = new int[]{
-            R.drawable.iv_navi_splite_qc7, R.drawable.iv_video_splite_qc7,
-            R.drawable.iv_edog_qc7_splite, R.drawable.iv_music_splite_qc7,
-            R.drawable.iv_record_splite_qc7, R.drawable.iv_fm_splite_qc7,
-            R.drawable.iv_bt_splite_qc7, R.drawable.iv_applist_splite_qc7,};//hp qc7 version
+            R.drawable.iv_navi_zkja, R.drawable.iv_video_zkja,
+            R.drawable.iv_record_zkja, R.drawable.iv_fm_zkja,
+            R.drawable.iv_bt_zkja, R.drawable.iv_settings_zkja,
+            R.drawable.iv_applist_zkja};// zkja
+
+//    public static int[] img9ThreeImage = new int[]{
+//            R.drawable.iv_navi_splite_qc7, R.drawable.iv_video_splite_qc7,
+//            R.drawable.iv_edog_qc7_splite, R.drawable.iv_music_splite_qc7,
+//            R.drawable.iv_record_splite_qc7, R.drawable.iv_fm_splite_qc7,
+//            R.drawable.iv_bt_splite_qc7, R.drawable.iv_applist_splite_qc7,};//hp qc7 version
 
     /*------------------------------海外版 全屏显示icon------------------------------*/
 
@@ -246,17 +248,17 @@ public class Constances {
 //            R.drawable.iv_record_splite_full_qc7, R.drawable.iv_fm_splite_full_qc7,
 //            R.drawable.iv_bt_splite_full_qc7, R.drawable.iv_applist_splite_full_qc7};
 
-//    public static int[] img9ThreeImageMax = new int[]{
-//            R.drawable.iv_navi_zkja, R.drawable.iv_video_zkja,
-//            R.drawable.iv_record_zkja, R.drawable.iv_fm_zkja,
-//            R.drawable.iv_bt_zkja, R.drawable.iv_settings_zkja,
-//            R.drawable.iv_applist_zkja};//zkja
-
     public static int[] img9ThreeImageMax = new int[]{
-            R.drawable.iv_navi_splite_full_qc7, R.drawable.iv_video_splite_full_qc7,
-            R.drawable.iv_edog_qc7_splite_full, R.drawable.iv_music_splite_full_qc7,
-            R.drawable.iv_record_splite_full_qc7, R.drawable.iv_fm_splite_full_qc7,
-            R.drawable.iv_bt_splite_full_qc7, R.drawable.iv_applist_splite_full_qc7};//hp
+            R.drawable.iv_navi_zkja, R.drawable.iv_video_zkja,
+            R.drawable.iv_record_zkja, R.drawable.iv_fm_zkja,
+            R.drawable.iv_bt_zkja, R.drawable.iv_settings_zkja,
+            R.drawable.iv_applist_zkja};//zkja
+
+//    public static int[] img9ThreeImageMax = new int[]{
+//            R.drawable.iv_navi_splite_full_qc7, R.drawable.iv_video_splite_full_qc7,
+//            R.drawable.iv_edog_qc7_splite_full, R.drawable.iv_music_splite_full_qc7,
+//            R.drawable.iv_record_splite_full_qc7, R.drawable.iv_fm_splite_full_qc7,
+//            R.drawable.iv_bt_splite_full_qc7, R.drawable.iv_applist_splite_full_qc7};//hp
 
 //    public static int[] img9ThreeImageMax = new int[]{
 //            R.drawable.iv_navi_splite_full_wj, R.drawable.iv_video_splite_full_wj,
@@ -289,16 +291,17 @@ public class Constances {
 //			PACKAGE_NAME_MUSIC, PACKAGE_NAME_CAMERA, PACKAGE_NAME_FM, PACKAGE_NAME_BLUETOOTH,
 //			PACKAGE_NAME_APPLIST };
 
-        public static String[] m9ThreePackageOversea = {
-            PACKAGE_NAME_CLD_2, PACKAGE_NAME_VIDEO,
-            PACKAGE_NAME_EDOG, PACKAGE_NAME_MUSIC,
-            PACKAGE_NAME_CAMERA, PACKAGE_NAME_FM,
-            PACKAGE_NAME_BLUETOOTH, PACKAGE_NAME_APPLIST};//hp
-//    public static String[] m9ThreePackageOversea = {
+//        public static String[] m9ThreePackageOversea = {
 //            PACKAGE_NAME_CLD_2, PACKAGE_NAME_VIDEO,
+//            PACKAGE_NAME_EDOG, PACKAGE_NAME_MUSIC,
 //            PACKAGE_NAME_CAMERA, PACKAGE_NAME_FM,
-//            PACKAGE_NAME_BLUETOOTH,PACKAGE_NAME_SETTINGS,
-//            PACKAGE_NAME_APPLIST};//zkja
+//            PACKAGE_NAME_BLUETOOTH, PACKAGE_NAME_APPLIST};//hp
+
+    public static String[] m9ThreePackageOversea = {
+            PACKAGE_NAME_CLD_3, PACKAGE_NAME_VIDEO,
+            PACKAGE_NAME_CAMERA, PACKAGE_NAME_FM,
+            PACKAGE_NAME_BLUETOOTH,PACKAGE_NAME_SETTINGS,
+            PACKAGE_NAME_APPLIST};//zkja
 
 //    public static String[] m9ThreePackageOversea = {
 //            PACKAGE_NAME_GOOGLE_MAP, PACKAGE_NAME_VIDEO,
